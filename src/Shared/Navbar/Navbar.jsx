@@ -2,12 +2,26 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo (1).png";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { toast } from "react-toastify";
+import { FaUserAltSlash } from "react-icons/fa";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        toast.success("Logout successful", { theme: "dark", autoClose: 2000 });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
-    <nav className="navbar bg-base-100 shadow-xl">
+    <nav className="navbar bg-base-100 shadow-xl rounded-md">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -46,7 +60,10 @@ const Navbar = () => {
           </ul>
         </div>
         <div>
-          <img className="sm:w-4/12" src={logo} alt="" />
+          <Link to='/'>
+            {" "}
+            <img className="sm:w-4/12" src={logo} alt="" />
+          </Link>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -61,15 +78,21 @@ const Navbar = () => {
         {user ? (
           <>
             {" "}
-            <img
-              className="w-12 h-12 rounded-full mr-4"
-              src={user?.photoURL}
-              alt=""
-            />{" "}
-            <button className="btn btn-custom">Logout</button>{" "}
+            {user.photoURL ? (
+              <img
+                className="w-12 h-12 rounded-full mr-4"
+                src={user?.photoURL}
+                alt=""
+              />
+            ) : (
+              <FaUserAltSlash className="w-10 h-10 rounded-full mr-4 border border-blue-100 " />
+            )}
+            <button onClick={handleLogOut} className="btn btn-custom">
+              Logout
+            </button>{" "}
           </>
         ) : (
-          <Link to='/login'>
+          <Link to="/login">
             {" "}
             <button className="btn btn-custom">Login</button>
           </Link>

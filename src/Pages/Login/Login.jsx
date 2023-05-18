@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const Login = () => {
-  const { signIn, googleLogin } = useContext(AuthContext);
+  const { signIn, googleLogin, githubLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   const handleLogin = (event) => {
@@ -21,6 +21,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        form.reset();
         setError("");
         toast.success("Login successful", { theme: "dark", autoClose: 2000 });
       })
@@ -40,6 +41,17 @@ const Login = () => {
       })
       .catch((error) => {
         setError(error.message);
+      });
+  };
+
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -90,10 +102,18 @@ const Login = () => {
             </div>
             <div className="divider">OR</div>
             <div className="flex justify-center gap-4">
-              <button onClick={handleGoogleLogin} className="btn btn-primary btn-circle" type="button">
+              <button
+                onClick={handleGoogleLogin}
+                className="btn btn-primary btn-circle"
+                type="button"
+              >
                 <FaGoogle />{" "}
               </button>
-              <button className="btn  btn-circle" type="button">
+              <button
+                onClick={handleGithubLogin}
+                className="btn  btn-circle"
+                type="button"
+              >
                 <FaGithub />{" "}
               </button>
             </div>
