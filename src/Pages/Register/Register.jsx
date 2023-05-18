@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import loginImg from "../../assets/images/login.svg";
+import registerImg from "../../assets/images/login.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
@@ -31,11 +31,11 @@ const Register = () => {
 
   return (
     <div className="hero min-h-screen bg-base-200 py-10">
-      <div className="hero-content grid md:grid-cols-2 items-center justify-center">
+      <div className="hero-content grid md:grid-cols-2 items-center justify-items-center">
         <div className="text-center mr-10">
-          <img src={loginImg} alt="" />
+          <img src={registerImg} alt="" />
         </div>
-        <div className="card  w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="card w-full max-w-sm shadow-2xl bg-base-100">
           <h1 className="text-3xl font-bold text-center my-5 text-primary">
             Register now!
           </h1>
