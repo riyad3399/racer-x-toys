@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.btn-custom {
+    @apply bg-gradient-to-r border-none duration-300 animate-pulse from-pink-400 to-yellow-500 hover:from-green-500 hover:to-blue-500;
+  }

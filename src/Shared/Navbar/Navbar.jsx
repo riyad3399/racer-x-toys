@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo (1).png";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <nav className="navbar bg-base-100 shadow-xl">
       <div className="navbar-start">
@@ -32,7 +36,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li tabIndex={0}>
-              <Link className="font-bold" to="/blog">Blog</Link>
+              <Link className="font-bold" to="/blog">
+                Blog
+              </Link>
             </li>
             <li>
               <a>Item 3</a>
@@ -47,10 +53,27 @@ const Navbar = () => {
         <Link className="mr-4 text-lg font-semibold" to="/">
           Home
         </Link>
-        <Link className="text-lg font-semibold" to="/blog">Blog</Link>
+        <Link className="text-lg font-semibold" to="/blog">
+          Blog
+        </Link>
       </div>
       <div className="navbar-end ">
-        <button className="btn animate-pulse duration-500 bg-[#19A7CE]">Get started</button>
+        {user ? (
+          <>
+            {" "}
+            <img
+              className="w-12 h-12 rounded-full mr-4"
+              src={user?.photoURL}
+              alt=""
+            />{" "}
+            <button className="btn btn-custom">Logout</button>{" "}
+          </>
+        ) : (
+          <Link to='/login'>
+            {" "}
+            <button className="btn btn-custom">Login</button>
+          </Link>
+        )}
       </div>
     </nav>
   );

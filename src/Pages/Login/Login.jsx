@@ -3,9 +3,10 @@ import loginImg from "../../assets/images/login.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   const handleLogin = (event) => {
@@ -25,6 +26,19 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setError(error.message);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setError("");
+        toast.success("Login successful", { theme: "dark", autoClose: 2000 });
+      })
+      .catch((error) => {
         setError(error.message);
       });
   };
@@ -66,13 +80,22 @@ const Login = () => {
               />
             </div>
             <p className="text-center font-semibold mt-3">
-              Racer X toys New? Go to{" "}
+              Racer-X-toys New? Go to{" "}
               <Link to="/register" className="text-orange-500 font-bold">
                 Register
               </Link>
             </p>
             <div className="form-control mt-4">
-              <input className="btn btn-primary" type="submit" value="Login" />
+              <input className="btn btn-custom" type="submit" value="Login" />
+            </div>
+            <div className="divider">OR</div>
+            <div className="flex justify-center gap-4">
+              <button onClick={handleGoogleLogin} className="btn btn-primary btn-circle" type="button">
+                <FaGoogle />{" "}
+              </button>
+              <button className="btn  btn-circle" type="button">
+                <FaGithub />{" "}
+              </button>
             </div>
           </form>
         </div>

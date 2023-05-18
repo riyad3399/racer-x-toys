@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import registerImg from "../../assets/images/login.svg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -20,12 +21,17 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-          console.log(user);
-          toast.success('Register successful', { theme: 'dark', autoClose: 2000 })
-          form.reset();
+        console.log(user);
+        setError("");
+        toast.success("Register successful", {
+          theme: "dark",
+          autoClose: 2000,
+        });
+        form.reset();
       })
       .catch((error) => {
         console.log(error);
+        setError(error.message);
       });
   };
 
@@ -39,6 +45,7 @@ const Register = () => {
           <h1 className="text-3xl font-bold text-center my-5 text-primary">
             Register now!
           </h1>
+          <p className="text-certer text-red-400">{error}</p>
           <form onSubmit={handleRegister} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -96,12 +103,13 @@ const Register = () => {
             </div>
             <div className="form-control mt-4">
               <input
-                className="btn btn-primary"
+                className="btn btn-custom"
                 type="submit"
                 value="Register"
               />
             </div>
           </form>
+            
         </div>
       </div>
     </div>

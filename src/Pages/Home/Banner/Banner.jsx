@@ -14,7 +14,7 @@ const Banner = () => {
           the perfect car toy that will bring endless smiles and adventures into
           your child's life!
         </p>
-        <button className="btn bg-[#146C94] animate-pulse duration-500 ">
+        <button className="btn btn-custom btn-wide ">
           Get Start
         </button>
       </div>
