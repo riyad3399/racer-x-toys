@@ -12,5 +12,6 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': 'warn',
     'import/no-commonjs': 'off',
+    "react/prop-types": "off"
   },
 }
