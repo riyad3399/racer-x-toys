@@ -50,7 +50,7 @@ const Navbar = () => {
         <Link className="text-lg font-semibold" to="/blog">Blog</Link>
       </div>
       <div className="navbar-end ">
-        <button className="sm:btn btn-primary">Get started</button>
+        <button className="btn animate-pulse duration-500 bg-[#19A7CE]">Get started</button>
       </div>
     </nav>
   );
