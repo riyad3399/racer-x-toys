@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import {
-    GithubAuthProvider,
+  GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
@@ -15,34 +15,41 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const auth = getAuth(app);
-    const googleProvider = new GoogleAuthProvider();
-    const gitgubProvider = new GithubAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
+  const gitgubProvider = new GithubAuthProvider();
 
   const [user, setUser] = useState(null);
+  const [loader, setLoader] = useState(true);
 
   const createUser = (email, password) => {
+    setLoader(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signIn = (email, password) => {
+    setLoader(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const googleLogin = () => {
+    setLoader(true);
     return signInWithPopup(auth, googleProvider);
   };
 
-    const githubLogin = () => {
-        return signInWithPopup(auth, gitgubProvider);
-    }
+  const githubLogin = () => {
+    setLoader(true);
+    return signInWithPopup(auth, gitgubProvider);
+  };
 
   const logOut = () => {
+    setLoader(true);
     return signOut(auth);
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoader(false);
       console.log("current user;", currentUser);
     });
     return () => {
@@ -54,9 +61,10 @@ const AuthProvider = ({ children }) => {
     user,
     createUser,
     signIn,
-      googleLogin,
-      githubLogin,
+    googleLogin,
+    githubLogin,
     logOut,
+    loader,
   };
 
   return (

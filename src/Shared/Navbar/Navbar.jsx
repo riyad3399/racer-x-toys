@@ -10,9 +10,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
+      .then(() => {
         toast.success("Logout successful", { theme: "dark", autoClose: 2000 });
       })
       .catch((error) => {
@@ -29,6 +27,7 @@ const Navbar = () => {
       <Link to="/blog" className="font-bold mr-4">
         BLog
       </Link>
+      <Link to='/alltoys' className="font-bold mr-4">All Toys</Link>
       {user && (
         <Link to="/addtoy" className="font-bold">
           Add Toy
