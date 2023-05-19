@@ -20,8 +20,10 @@ const Register = () => {
     console.log(newUser);
     createUser(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        const currentUser = result.user;
+        currentUser.displayName = name;
+        currentUser.photoURL = photo;
+        console.log(currentUser);
         setError("");
         toast.success("Register successful", {
           theme: "dark",

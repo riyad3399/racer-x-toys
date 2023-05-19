@@ -20,6 +20,23 @@ const Navbar = () => {
       });
   };
 
+  const menuItems = (
+    <>
+      <Link to="/" className="font-bold mr-4">
+        Home
+      </Link>
+
+      <Link to="/blog" className="font-bold mr-4">
+        BLog
+      </Link>
+      {user && (
+        <Link to="/addtoy" className="font-bold">
+          Add Toy
+        </Link>
+      )}
+    </>
+  );
+
   return (
     <nav className="navbar bg-base-100 shadow-xl rounded-md">
       <div className="navbar-start">
@@ -44,36 +61,17 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <Link className="font-bold" to="/">
-                Home
-              </Link>
-            </li>
-            <li tabIndex={0}>
-              <Link className="font-bold" to="/blog">
-                Blog
-              </Link>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {menuItems}
           </ul>
         </div>
         <div>
-          <Link to='/'>
+          <Link to="/">
             {" "}
             <img className="sm:w-4/12" src={logo} alt="" />
           </Link>
         </div>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <Link className="mr-4 text-lg font-semibold" to="/">
-          Home
-        </Link>
-        <Link className="text-lg font-semibold" to="/blog">
-          Blog
-        </Link>
-      </div>
+      <div className="navbar-center hidden lg:flex">{menuItems}</div>
       <div className="navbar-end ">
         {user ? (
           <>
