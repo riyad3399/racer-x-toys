@@ -6,3 +6,7 @@
 .btn-custom {
     @apply bg-gradient-to-r border-none duration-300 animate-pulse from-pink-400 to-yellow-500 hover:from-green-500 hover:to-blue-500;
   }
+
+.active{
+  @apply bg-gradient-to-r px-3 py-2 rounded-md from-purple-300 to-cyan-100;
+}

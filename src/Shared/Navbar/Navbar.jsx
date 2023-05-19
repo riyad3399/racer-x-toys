@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import { FaUserAltSlash } from "react-icons/fa";
+import ActiveLink from "../../ActiveLink/ActiveLink";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -19,21 +20,21 @@ const Navbar = () => {
   };
 
   const menuItems = (
-    <>
-      <Link to="/" className="font-bold mr-4">
-        Home
-      </Link>
+    <div className="space-x-5">
+      <ActiveLink to="/" >
+      <span className="font-bold">Home</span>
+      </ActiveLink>
 
-      <Link to="/blog" className="font-bold mr-4">
-        BLog
-      </Link>
-      <Link to='/alltoys' className="font-bold mr-4">All Toys</Link>
+      <ActiveLink to="/blog" >
+       <span className="font-bold">Blog</span>
+      </ActiveLink>
+      <ActiveLink to='/alltoys' ><span className="font-bold">All Toys</span> </ActiveLink>
       {user && (
-        <Link to="/addtoy" className="font-bold">
-          Add Toy
-        </Link>
+        <ActiveLink to="/addtoy" >
+         <span className="font-bold "> Add Toy</span>
+        </ActiveLink>
       )}
-    </>
+    </div>
   );
 
   return (
