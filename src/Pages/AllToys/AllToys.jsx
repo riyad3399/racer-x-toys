@@ -1,11 +1,9 @@
-import { useState } from "react";
 import SingleToy from "./SingleToy";
 import { useLoaderData } from "react-router-dom";
 
 const AllToys = () => {
-  const [toys, setToys] = useState([]);
   const loaderToy = useLoaderData();
-  console.log("loader data ", loaderToy);
+
 
   return (
     <div className="overflow-x-auto mt-10">

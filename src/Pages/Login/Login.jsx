@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImg from "../../assets/images/login.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -8,6 +8,9 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 const Login = () => {
   const { signIn, googleLogin, githubLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const location = useLocation();
+  const from = location.state?.from.pathname || '/';
+  const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -22,6 +25,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         form.reset();
+        navigate(from)
         setError("");
         toast.success("Login successful", { theme: "dark", autoClose: 2000 });
       })
@@ -37,6 +41,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setError("");
+        navigate(from)
         toast.success("Login successful", { theme: "dark", autoClose: 2000 });
       })
       .catch((error) => {
@@ -49,6 +54,8 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        navigate(from)
+        toast.success("Login successful", { theme: "dark", autoClose: 2000 });
       })
       .catch((error) => {
         console.log(error);

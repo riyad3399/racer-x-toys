@@ -44,7 +44,11 @@ const router = createBrowserRouter([
       },
       {
         path: "viewDetails/:id",
-        element: <ViewDetails></ViewDetails>,
+        element: (
+          <PrivateRoutes>
+            <ViewDetails></ViewDetails>
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://racer-x-toys-server-riyad3399.vercel.app/alltoys/${params.id}`
@@ -71,7 +75,10 @@ const router = createBrowserRouter([
             <UpdateToy></UpdateToy>
           </PrivateRoutes>
         ),
-        loader: ({params}) => fetch(`http://localhost:5000/allToys/${params.id}`)
+        loader: ({ params }) =>
+          fetch(
+            `https://racer-x-toys-server-riyad3399.vercel.app/allToys/${params.id}`
+          ),
       },
     ],
   },

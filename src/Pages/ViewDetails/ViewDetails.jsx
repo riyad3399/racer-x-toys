@@ -5,15 +5,15 @@ import "@smastrom/react-rating/style.css";
 
 const ViewDetails = () => {
   const loaderToys = useLoaderData();
-  console.log(loaderToys);
+
 
   const { photo, name, sellerName, email, price, rating, quantity, details } =
     loaderToys;
 
   return (
     <div className="mt-10 mx-3">
-      <div className="card lg:card-side bg-base-100 shadow-xl">
-        <figure>
+      <div className="card lg:card-side bg-base-100 shadow-xl w-full">
+        <figure className="md:w-1/2 h-96 my-auto">
           <img className="rounded-lg" src={photo} alt="Album" />
         </figure>
         <div className="card-body ">
@@ -50,9 +50,6 @@ const ViewDetails = () => {
               Details:{" "}
               <span className="text-orange-400 font-bold">{details}</span>
             </p>
-          </div>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Listen</button>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const SingleToy = ({ toy, index }) => {
-  console.log(toy);
+  // console.log(toy);
   const { category, name, price, quantity, sellerName, _id } = toy;
 
  

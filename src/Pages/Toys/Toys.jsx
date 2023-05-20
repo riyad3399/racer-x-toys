@@ -19,7 +19,7 @@ const Toys = ({ toys, handleDeteleToy }) => {
   return (
     <div>
       <div className="card lg:card-side bg-base-100 shadow-xl w-full mb-8">
-        <figure>
+        <figure className="md:w-1/2 h-96 my-auto">
           <img className="rounded-lg" src={photo} alt="Album" />
         </figure>
         <div className="card-body">
