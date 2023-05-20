@@ -1,6 +1,45 @@
-const Toys = ({ toys }) => {
-  const { photo, name, sellerName, email, price, rating, quantity, details } =
-    toys;
+import { FaTrash } from "react-icons/fa";
+
+const Toys = ({ toys, handleDeteleToy }) => {
+  const {
+    photo,
+    name,
+    sellerName,
+    email,
+    price,
+    rating,
+    quantity,
+    details,
+    _id,
+  } = toys;
+
+ 
+    
+//   const handleDeteleToy = (id) => {
+//     fetch(`http://localhost:5000/deleteToy/${id}`, {
+//       method: "DELETE",
+//     })
+//       .then((res) => res.json())
+//       .then((data) => {
+//           console.log(data);
+//           setAllToys(data)
+//         Swal.fire({
+//           title: "Are you sure?",
+//           text: "You won't be able to revert this!",
+//           icon: "warning",
+//           showCancelButton: true,
+//           confirmButtonColor: "#3085d6",
+//           cancelButtonColor: "#d33",
+//           confirmButtonText: "Yes, delete it!",
+//         }).then((result) => {
+//           if (result.isConfirmed) {
+//               if (data.deletedCount > 0) {
+//                 Swal.fire("Deleted!", "Your toy has been deleted.", "success");
+//             }
+//           }
+//         });
+//       });
+//   };
 
   return (
     <div>
@@ -40,8 +79,14 @@ const Toys = ({ toys }) => {
               <span className="text-orange-400 font-bold">{details}</span>
             </p>
           </div>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Listen</button>
+          <div className="card-actions justify-end mt-3">
+            <button className="btn btn-success">Updated</button>
+            <button
+              onClick={() => handleDeteleToy(_id)}
+              className="btn btn-error"
+            >
+              <FaTrash className="mr-2" /> Delete
+            </button>
           </div>
         </div>
       </div>
