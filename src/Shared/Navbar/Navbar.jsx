@@ -20,19 +20,26 @@ const Navbar = () => {
   };
 
   const menuItems = (
-    <div className="space-x-5">
-      <ActiveLink to="/" >
-      <span className="font-bold">Home</span>
+    <div className="space-x-6 text-gray-500">
+      <ActiveLink to="/">
+        <span className="font-bold">Home</span>
       </ActiveLink>
 
-      <ActiveLink to="/blog" >
-       <span className="font-bold">Blog</span>
+      <ActiveLink to="/blog">
+        <span className="font-bold">Blog</span>
       </ActiveLink>
-      <ActiveLink to='/alltoys' ><span className="font-bold">All Toys</span> </ActiveLink>
+      <ActiveLink to="/alltoys">
+        <span className="font-bold">All Toys</span>{" "}
+      </ActiveLink>
       {user && (
-        <ActiveLink to="/addtoy" >
-         <span className="font-bold "> Add Toy</span>
-        </ActiveLink>
+        <>
+          <ActiveLink to="/addtoy">
+            <span className="font-bold "> Add Toy</span>
+          </ActiveLink>
+          <ActiveLink to="/mytoys">
+            <span className="font-bold ">My Toys</span>
+          </ActiveLink>
+        </>
       )}
     </div>
   );

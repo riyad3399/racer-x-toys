@@ -1,19 +1,14 @@
-import { Link, useLoaderData } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
-
-const ViewDetails = () => {
-  const loaderToys = useLoaderData();
-  console.log(loaderToys);
+const Toys = ({ toys }) => {
   const { photo, name, sellerName, email, price, rating, quantity, details } =
-    loaderToys;
+    toys;
 
   return (
-    <div className="mt-10 mx-3">
-      <div className="card lg:card-side bg-base-100 shadow-xl">
+    <div>
+      <div className="card lg:card-side bg-base-100 shadow-xl w-full mb-8">
         <div className="w-1/2">
-        <figure>
-          <img className="rounded-lg" src={photo} alt="Album" />
-        </figure>
+          <figure>
+            <img className="rounded-lg" src={photo} alt="Album" />
+          </figure>
         </div>
         <div className="card-body w-1/2">
           <h2 className="card-title font-bold text-4xl mb-10 text-orange-400">
@@ -50,13 +45,8 @@ const ViewDetails = () => {
           </div>
         </div>
       </div>
-      <div className="text-center my-8">
-        <Link to="/alltoys">
-          <button className="btn btn-primary btn-wide animate-pulse"><FaArrowLeft className="mr-3"/> Go All Toys</button>
-        </Link>
-      </div>
     </div>
   );
 };
 
-export default ViewDetails;
+export default Toys;

@@ -30,8 +30,8 @@ const AddToy = () => {
       quantity,
       details,
       };
-      
-      fetch('http://localhost:5000/allToys', {
+      console.log(newToy);
+      fetch('https://racer-x-toys-server-riyad3399.vercel.app/alltoys', {
           method: 'POST', 
           headers: {
               'content-type': 'application/json'
@@ -113,13 +113,11 @@ const AddToy = () => {
             <label className="label">
               <span className="label-text text-white">Sub Category</span>
             </label>
-            <input
-              type="text"
-              placeholder="Sub Category"
-              name="category"
-              required
-              className="input input-bordered"
-            />
+            <select name="category" id="" className="select select-bordered">
+              <option value="sports">Sports</option>
+              <option value="truck">Truck</option>
+              <option value="regular">Regular</option>
+             </select>
           </div>
           <div className="form-control">
             <label className="label">
@@ -138,7 +136,7 @@ const AddToy = () => {
               <span className="label-text text-white">Rating</span>
             </label>
             <input
-              type="text"
+              type="number"
               placeholder="Rating"
               name="rating"
               required
@@ -150,7 +148,7 @@ const AddToy = () => {
               <span className="label-text text-white">Quantity</span>
             </label>
             <input
-              type="text"
+              type="number"
               placeholder="Available quantity"
               name="quantity"
               required
