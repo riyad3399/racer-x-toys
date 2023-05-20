@@ -8,7 +8,8 @@ export default {
     extend: {
       backgroundImage: {
         banner:
-        "linear-gradient(to right bottom, rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url('/img/background.jpg')",
+          "linear-gradient(to right bottom, rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url('/img/background.jpg')",
+        update: "linear-gradient(to right bottom, rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url('/img/update.jpg')"
       }
     },
   },

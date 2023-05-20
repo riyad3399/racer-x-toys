@@ -1,21 +1,22 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const ViewDetails = () => {
   const loaderToys = useLoaderData();
   console.log(loaderToys);
+
   const { photo, name, sellerName, email, price, rating, quantity, details } =
     loaderToys;
 
   return (
     <div className="mt-10 mx-3">
       <div className="card lg:card-side bg-base-100 shadow-xl">
-        <div className="w-1/2">
         <figure>
           <img className="rounded-lg" src={photo} alt="Album" />
         </figure>
-        </div>
-        <div className="card-body w-1/2">
+        <div className="card-body ">
           <h2 className="card-title font-bold text-4xl mb-10 text-orange-400">
             {name}
           </h2>
@@ -32,9 +33,14 @@ const ViewDetails = () => {
               Price: ${" "}
               <span className="text-orange-400 font-bold">{price}</span>
             </p>
-            <p className="text-xl font-semibold">
-              Rating:{" "}
-              <span className="text-orange-400 font-bold">{rating}</span>
+            <p className="text-xl font-semibold flex">
+              Rating:
+              <Rating
+                className="ml-2"
+                style={{ maxWidth: 150 }}
+                value={rating}
+                readOnly
+              />
             </p>
             <p className="text-xl font-semibold">
               Quantity:{" "}
@@ -52,7 +58,9 @@ const ViewDetails = () => {
       </div>
       <div className="text-center my-8">
         <Link to="/alltoys">
-          <button className="btn btn-primary btn-wide animate-pulse"><FaArrowLeft className="mr-3"/> Go All Toys</button>
+          <button className="btn btn-primary btn-wide animate-pulse">
+            <FaArrowLeft className="mr-3" /> Go All Toys
+          </button>
         </Link>
       </div>
     </div>

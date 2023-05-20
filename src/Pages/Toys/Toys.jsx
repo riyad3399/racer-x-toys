@@ -1,4 +1,7 @@
 import { FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const Toys = ({ toys, handleDeteleToy }) => {
   const {
@@ -13,43 +16,13 @@ const Toys = ({ toys, handleDeteleToy }) => {
     _id,
   } = toys;
 
- 
-    
-//   const handleDeteleToy = (id) => {
-//     fetch(`http://localhost:5000/deleteToy/${id}`, {
-//       method: "DELETE",
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//           console.log(data);
-//           setAllToys(data)
-//         Swal.fire({
-//           title: "Are you sure?",
-//           text: "You won't be able to revert this!",
-//           icon: "warning",
-//           showCancelButton: true,
-//           confirmButtonColor: "#3085d6",
-//           cancelButtonColor: "#d33",
-//           confirmButtonText: "Yes, delete it!",
-//         }).then((result) => {
-//           if (result.isConfirmed) {
-//               if (data.deletedCount > 0) {
-//                 Swal.fire("Deleted!", "Your toy has been deleted.", "success");
-//             }
-//           }
-//         });
-//       });
-//   };
-
   return (
     <div>
       <div className="card lg:card-side bg-base-100 shadow-xl w-full mb-8">
-        <div className="w-1/2">
-          <figure>
-            <img className="rounded-lg" src={photo} alt="Album" />
-          </figure>
-        </div>
-        <div className="card-body w-1/2">
+        <figure>
+          <img className="rounded-lg" src={photo} alt="Album" />
+        </figure>
+        <div className="card-body">
           <h2 className="card-title font-bold text-4xl mb-10 text-orange-400">
             {name}
           </h2>
@@ -66,9 +39,14 @@ const Toys = ({ toys, handleDeteleToy }) => {
               Price: ${" "}
               <span className="text-orange-400 font-bold">{price}</span>
             </p>
-            <p className="text-xl font-semibold">
+            <p className="text-xl font-semibold flex ">
               Rating:{" "}
-              <span className="text-orange-400 font-bold">{rating}</span>
+              <Rating
+                className="ml-2"
+                style={{ maxWidth: 150 }}
+                value={rating}
+                readOnly
+              />
             </p>
             <p className="text-xl font-semibold">
               Quantity:{" "}
@@ -80,7 +58,9 @@ const Toys = ({ toys, handleDeteleToy }) => {
             </p>
           </div>
           <div className="card-actions justify-end mt-3">
-            <button className="btn btn-success">Updated</button>
+            <Link to={`/updateToy/${_id}`}>
+              <button className="btn btn-success">Updated</button>
+            </Link>
             <button
               onClick={() => handleDeteleToy(_id)}
               className="btn btn-error"

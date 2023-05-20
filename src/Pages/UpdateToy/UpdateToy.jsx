@@ -1,64 +1,55 @@
 import { useContext } from "react";
-import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const AddToy = () => {
-
+const UpdateToy = () => {
   const { user } = useContext(AuthContext);
+  const loaderToy = useLoaderData();
+  console.log(loaderToy);
+  const { photo, name, sellerName, rating, _id } = loaderToy;
 
-  const handleAddToy = (event) => {
+  const handleUpdateToy = (event) => {
     event.preventDefault();
 
     const form = event.target;
-    const photo = form.photo.value;
-    const name = form.name.value;
-    const sellerName = form.seller.value;
-    const email = form.email.value;
-    const category = form.category.value;
+
     const price = form.price.value;
-    const rating = form.rating.value;
     const quantity = form.quantity.value;
     const details = form.details.value;
-    const newToy = {
-      photo,
-      name,
-      sellerName,
-      email,
-      category,
+    const updateToy = {
       price,
-      rating,
       quantity,
       details,
-      };
-      console.log(newToy);
-      fetch('https://racer-x-toys-server-riyad3399.vercel.app/alltoys', {
-          method: 'POST', 
-          headers: {
-              'content-type': 'application/json'
-          }, 
-          body: JSON.stringify(newToy)
-      })
-          .then(res => res.json())
-          .then(data => {
-              if (data.insertedId) {
-                  form.reset();
-                Swal.fire({
-                    title: 'Toy add successful!',
-                    text: 'Do you want to continue',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
-                  })
-           }
-          console.log(data);
-      })
+    };
+
+    fetch(`http://localhost:5000/allToys/${_id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateToy),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Updated!",
+            text: "Do you want to continue",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
   };
 
   return (
-    <div className="my-10 bg-banner rounded-md p-20">
+    <div className="my-10 bg-update rounded-md p-20">
       <h2 className="text-6xl text-cyan-200 animate-pulse font-bold text-center mb-10">
-        Add A Toy
+        Update A Toy
       </h2>
-      <form onSubmit={handleAddToy}>
+      <form onSubmit={handleUpdateToy}>
         <div className="grid md:grid-cols-2 md:gap-6  ">
           <div className="form-control">
             <label className="label">
@@ -68,7 +59,7 @@ const AddToy = () => {
               type="url"
               placeholder="Toy photo"
               name="photo"
-              required
+              value={photo}
               className="input input-bordered"
             />
           </div>
@@ -80,7 +71,7 @@ const AddToy = () => {
               type="text"
               placeholder="Name"
               name="name"
-              required
+              value={name}
               className="input input-bordered"
             />
           </div>
@@ -92,7 +83,7 @@ const AddToy = () => {
               type="text"
               placeholder="seller Name"
               name="seller"
-              required
+              value={sellerName}
               className="input input-bordered"
             />
           </div>
@@ -117,7 +108,7 @@ const AddToy = () => {
               <option value="sports">Sports</option>
               <option value="truck">Truck</option>
               <option value="regular">Regular</option>
-             </select>
+            </select>
           </div>
           <div className="form-control">
             <label className="label">
@@ -127,6 +118,7 @@ const AddToy = () => {
               type="text"
               placeholder="Price"
               name="price"
+              defaultValue="3k"
               required
               className="input input-bordered"
             />
@@ -139,7 +131,7 @@ const AddToy = () => {
               type="number"
               placeholder="Rating"
               name="rating"
-              required
+              value={rating}
               className="input input-bordered"
             />
           </div>
@@ -148,9 +140,10 @@ const AddToy = () => {
               <span className="label-text text-white">Quantity</span>
             </label>
             <input
-              type="number"
+              type="text"
               placeholder="Available quantity"
               name="quantity"
+              defaultValue="40+"
               required
               className="input input-bordered"
             />
@@ -164,16 +157,17 @@ const AddToy = () => {
             type="text"
             placeholder="Details Description"
             name="details"
+            defaultValue="type your description"
             required
             className="textarea textarea-bordered"
           />
         </div>
         <div className="form-control mt-6">
-          <input className="btn btn-custom" type="submit" value="Add Toy" />
+          <input className="btn btn-custom" type="submit" value="Update Toy" />
         </div>
       </form>
     </div>
   );
 };
 
-export default AddToy;
+export default UpdateToy;
