@@ -10,7 +10,7 @@ const LatestInventory = () => {
       <div className="my-24">
           <h1 className="text-5xl text-center font-bold text-cyan-400
           mb-6">Latest Inventory</h1>
-          <hr className="border-2 w-1/2 mx-auto mb-10"/>
+          <hr className="border w-1/2 mx-auto mb-10"/>
       <div className="grid md:grid-cols-3 gap-6">
         <div className="card w-full bg-base-100 hover:shadow-2xl border-2  hover:border-none">
           <figure className="p-4">
