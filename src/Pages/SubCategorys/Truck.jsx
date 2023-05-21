@@ -6,7 +6,7 @@ const Truck = ({ miniTruck }) => {
   const { photo, name, price, rating, _id } = miniTruck;
   return (
     <div>
-      <div className="card w-full bg-base-100 shadow-xl hover:border-2 border-orange-100">
+      <div className="card w-full bg-base-100 hover:shadow-2xl border-2 border-gray-200 hover:border-none duration-100">
         <figure className="px-8 pt-8">
           <img src={photo} alt="Truck" className="rounded-xl w-96 h-52" />
         </figure>

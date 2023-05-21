@@ -2,7 +2,7 @@ import banner from "../../../assets/images/banner (2).jpg";
 
 const Banner = () => {
   return (
-    <div className="my-10 grid md:grid-cols-2 items-center gap-5 ">
+    <div className="my-10 grid md:grid-cols-2 items-center gap-5">
       <div className="w-full space-y-5">
         <h3 className="text-6xl font-bold ">
           WELCOME TO MY <br />

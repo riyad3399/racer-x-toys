@@ -71,10 +71,11 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <div>
+        <div className="flex gap-3 items-center">
+          <img className="sm:w-4/12" src={logo} alt="" />
           <Link to="/">
             {" "}
-            <img className="sm:w-4/12" src={logo} alt="" />
+            <span className="text-2xl font-bold hidden md:inline-block">Racer X Toys</span>
           </Link>
         </div>
       </div>

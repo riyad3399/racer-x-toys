@@ -96,13 +96,22 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="password"
                 name="password"
                 required
                 className="input input-bordered"
               />
-              <p onClick={handleShowPassword} >{showPassword ? <FaEye /> : <FaEyeSlash />}</p>
+              <p
+                onClick={handleShowPassword}
+                className="absolute bottom-4 right-3"
+              >
+                {showPassword ? (
+                  <FaEye className="text-blue-500" />
+                ) : (
+                  <FaEyeSlash />
+                )}
+              </p>
             </div>
             <p className="text-center font-semibold mt-3">
               Racer-X-toys New? Go to{" "}

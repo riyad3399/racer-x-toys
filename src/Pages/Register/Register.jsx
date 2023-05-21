@@ -3,10 +3,12 @@ import registerImg from "../../assets/images/login.svg";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -35,6 +37,10 @@ const Register = () => {
         console.log(error);
         setError(error.message);
       });
+  };
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -73,17 +79,27 @@ const Register = () => {
                 className="input input-bordered"
               />
             </div>
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="password"
                 name="password"
                 required
                 className="input input-bordered"
               />
+              <p
+                onClick={handleShowPassword}
+                className="absolute bottom-4 right-3"
+              >
+                {showPassword ? (
+                  <FaEye className="text-blue-500" />
+                ) : (
+                  <FaEyeSlash />
+                )}
+              </p>
             </div>
             <div className="form-control">
               <label className="label">
@@ -111,7 +127,6 @@ const Register = () => {
               />
             </div>
           </form>
-            
         </div>
       </div>
     </div>

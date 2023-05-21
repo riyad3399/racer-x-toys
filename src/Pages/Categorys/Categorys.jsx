@@ -4,6 +4,7 @@ import Sports from "../SubCategorys/Sports";
 import Truck from "../SubCategorys/Truck";
 import Regular from "../SubCategorys/Regular";
 import { useEffect, useState } from "react";
+import "./Categorys.css";
 
 const Categorys = () => {
   const [allCategory, setAllCategory] = useState([]);
@@ -22,17 +23,31 @@ const Categorys = () => {
   const miniTrucks = allCategory.filter((item) => item.category === "truck");
 
   return (
-    <div className="text-center">
+    <div className="text-center my-20">
+      <h2 className="text-5xl text-center font-bold mb-6 text-cyan-600">
+        Shop by Category
+      </h2>
+      <hr className="border border-gray-300 w-1/2 mx-auto mb-16" />
       <Tabs>
         <TabList>
-          <Tab>Sports cars</Tab>
-          <Tab>Regular cars</Tab>
-          <Tab>Truck</Tab>
+          <Tab>
+            <span className="text-xl font-medium text-gray-400">
+              Sports cars
+            </span>
+          </Tab>
+          <Tab>
+            <span className="text-xl font-medium text-gray-400">
+              Regular cars
+            </span>{" "}
+          </Tab>
+          <Tab>
+            <span className="text-xl font-medium text-gray-400">Truck</span>{" "}
+          </Tab>
         </TabList>
 
         <TabPanel>
-          <h3 className="text-2xl font-semibold">Sports Cars</h3>
-          <div className="grid md:grid-cols-3 gap-4 ">
+          <h3 className="text-2xl font-semibold mb-4">Sports Cars</h3>
+          <div className="grid md:grid-cols-3 gap-6 ">
             {sportsCars &&
               sportsCars.map((sportCar) => (
                 <Sports key={sportCar._id} sportCar={sportCar}></Sports>
@@ -40,8 +55,8 @@ const Categorys = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <h3 className="text-2xl font-semibold">Regular Cars</h3>
-          <div className="grid md:grid-cols-3 gap-4 ">
+          <h3 className="text-2xl font-semibold mb-4">Regular Cars</h3>
+          <div className="grid md:grid-cols-3 gap-6 ">
             {regularCars &&
               regularCars.map((regularCar) => (
                 <Regular key={regularCar._id} regularCar={regularCar}></Regular>
@@ -49,8 +64,8 @@ const Categorys = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <h3 className="text-2xl font-semibold">Mini Trucks</h3>
-          <div className="grid md:grid-cols-3 gap-4 ">
+          <h3 className="text-2xl font-semibold mb-4">Mini Trucks</h3>
+          <div className="grid md:grid-cols-3 gap-6 ">
             {miniTrucks &&
               miniTrucks.map((miniTruck) => (
                 <Truck key={miniTruck._id} miniTruck={miniTruck}></Truck>

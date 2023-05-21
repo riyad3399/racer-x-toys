@@ -8,16 +8,17 @@ import "@smastrom/react-rating/style.css";
 
 const SpecialOffers = () => {
   return (
-    <>
+    <div className="mt-32">
       <h2 className="text-5xl font-bold text-cyan-600 text-center my-5">
         Special Offers
       </h2>
       <hr className="w-1/2 mx-auto border border-gray-200" />
-      <div className="grid md:grid-cols-4 gap-5 my-10">
+      <div className="grid md:grid-cols-4 gap-5 my-10 ">
         <div className="card w-full bg-base-100 hover:shadow-2xl border-2 hover:border-none duration-100">
           <figure className="p-5">
             <img className="w-80 h-52 rounded-md" src={offer1} alt="toy" />
           </figure>
+          <div className="badge badge-info font-medium absolute right-2 top-10 p-3">-20%</div>
           <div className="card-body items-center text-center">
             <h2 className="card-title">Mini Truck</h2>
             <Rating
@@ -28,7 +29,7 @@ const SpecialOffers = () => {
             />
             <div className="flex items-center gap-2">
               <span className="text-orange-600 text-lg font-bold">$55.00</span>
-              <span className="text-orange-400 text-lg font-bold ">$75.00</span>
+              <span className="text-orange-300 text-lg font-bold line-through decoration-2">$75.00</span>
             </div>
             <div className="card-actions justify-end">
               <button className="btn btn-ghost hover:btn-accent">
@@ -37,10 +38,11 @@ const SpecialOffers = () => {
             </div>
           </div>
         </div>
-        <div className="card w-full bg-base-100 hover:shadow-2xl border-2 hover:border-none duration-100">
+        <div className="card w-full bg-base-100 hover:shadow-2xl border-2 hover:border-none duration-100 ralative">
           <figure className="p-5">
             <img className="w-80 h-52 rounded-md" src={offer2} alt="toy" />
           </figure>
+          <div className="badge badge-info font-medium absolute right-2 top-10 p-3">-10%</div>
           <div className="card-body items-center text-center">
             <h2 className="card-title">Train</h2>
             <Rating
@@ -51,7 +53,7 @@ const SpecialOffers = () => {
             />
             <div className="flex items-center gap-2">
               <span className="text-orange-600 text-lg font-bold">$19.00</span>
-              <span className="text-orange-400 text-lg font-bold ">$21.00</span>
+              <span className="text-orange-300 text-lg font-bold line-through decoration-2">$21.00</span>
             </div>
             <div className="card-actions justify-end">
               <button className="btn btn-ghost hover:btn-accent">
@@ -60,16 +62,17 @@ const SpecialOffers = () => {
             </div>
           </div>
         </div>
-        <div className="card w-full bg-base-100 hover:shadow-2xl border-2 hover:border-none duration-100">
+        <div className="card w-full bg-base-100 hover:shadow-2xl border-2 hover:border-none duration-100 relative">
           <figure className="p-5">
             <img className="w-80 h-52 rounded-md" src={offer3} alt="toy" />
           </figure>
+          <div className="badge badge-info font-medium absolute right-2 top-10 p-3">-15%</div>
           <div className="card-body items-center text-center">
             <h2 className="card-title">Mini Jeep</h2>
             <Rating style={{ maxWidth: 100 }} value={5} readOnly />
             <div className="flex items-center gap-2">
               <span className="text-orange-600 text-lg font-bold">$130.00</span>
-              <span className="text-orange-400 text-lg font-bold ">
+              <span className="text-orange-300 text-lg font-bold line-through decoration-2">
                 $110.00
               </span>
             </div>
@@ -80,16 +83,17 @@ const SpecialOffers = () => {
             </div>
           </div>
         </div>
-        <div className="card w-full bg-base-100 hover:shadow-2xl border-2 hover:border-none duration-100">
+        <div className="card w-full bg-base-100 hover:shadow-2xl border-2 hover:border-none duration-100 relative">
           <figure className="p-5">
             <img className="w-80 h-52 rounded-md" src={offer4} alt="toy" />
           </figure>
+            <div className="badge badge-info font-medium absolute right-2 top-10 p-3">-11%</div>
           <div className="card-body items-center text-center">
             <h2 className="card-title">Red Car</h2>
             <Rating style={{ maxWidth: 100 }} value={3} readOnly />
             <div className="flex items-center gap-2">
               <span className="text-orange-600 text-lg font-bold">$99.00</span>
-              <span className="text-orange-400 text-lg font-bold ">
+              <span className="text-orange-300 text-lg font-bold line-through decoration-2 ">
                 $111.00
               </span>
             </div>
@@ -101,7 +105,7 @@ const SpecialOffers = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
