@@ -3,20 +3,25 @@ import "react-tabs/style/react-tabs.css";
 
 const ReactTabs = () => {
   return (
-    <Tabs>
-      <TabList>
-        <Tab>Title 1</Tab>
-        <Tab>Title 2</Tab>
-        <Tab>Title 3</Tab>
-      </TabList>
+    <div className="text-center">
+      <Tabs>
+        <TabList>
+          <Tab>Sports cars</Tab>
+          <Tab>Regular cars</Tab>
+          <Tab>Truck</Tab>
+        </TabList>
 
-      <TabPanel>
-        <h2>Any content 1</h2>
-      </TabPanel>
-      <TabPanel>
-        <h2>Any content 2</h2>
-      </TabPanel>
-    </Tabs>
+        <TabPanel>
+          <h2>Any content 1</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 2</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 3</h2>
+        </TabPanel>
+      </Tabs>
+    </div>
   );
 };
 

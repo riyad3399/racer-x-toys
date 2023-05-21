@@ -5,7 +5,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            {/* <ReactTabs></ReactTabs> */}
+            <ReactTabs></ReactTabs>
         </div>
     );
 };
