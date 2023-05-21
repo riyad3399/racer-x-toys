@@ -4,8 +4,10 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
+  useTitle('Register')
   const { createUser } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
