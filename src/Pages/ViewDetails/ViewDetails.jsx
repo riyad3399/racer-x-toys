@@ -54,9 +54,9 @@ const ViewDetails = () => {
         </div>
       </div>
       <div className="text-center my-8">
-        <Link to="/alltoys">
+        <Link to="/">
           <button className="btn btn-primary btn-wide animate-pulse">
-            <FaArrowLeft className="mr-3" /> Go All Toys
+            <FaArrowLeft className="mr-3" /> Go Home
           </button>
         </Link>
       </div>
