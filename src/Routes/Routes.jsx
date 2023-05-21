@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://racer-x-toys-server-riyad3399.vercel.app/alltoys/${params.id}`
+            `https://racer-x-toys-server.vercel.app/alltoys/${params.id}`
           ),
       },
       {
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://racer-x-toys-server-riyad3399.vercel.app/allToys/${params.id}`
+            `https://racer-x-toys-server.vercel.app/allToys/${params.id}`
           ),
       },
     ],

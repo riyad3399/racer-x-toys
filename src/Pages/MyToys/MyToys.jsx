@@ -10,7 +10,7 @@ const MyToys = () => {
 
   useEffect(() => {
     fetch(
-      `https://racer-x-toys-server-riyad3399.vercel.app/myToys/${user?.email}`
+      `https://racer-x-toys-server.vercel.app/myToys/${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -30,7 +30,7 @@ const MyToys = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `https://racer-x-toys-server-riyad3399.vercel.app/deleteToy/${id}`,
+          `https://racer-x-toys-server.vercel.app/deleteToy/${id}`,
           {
             method: "DELETE",
           }

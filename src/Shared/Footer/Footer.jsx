@@ -23,6 +23,8 @@ const Footer = () => {
           <br />
           Providing reliable tech since 1992
         </p>
+        <p className="font-semibold">programming@gamil.com</p>
+        <p className="font-semibold">+013482704092</p>
       </div>
       <div>
         <span className="footer-title">Services</span>

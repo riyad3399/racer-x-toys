@@ -31,7 +31,7 @@ const AddToy = () => {
       details,
       };
       console.log(newToy);
-      fetch('https://racer-x-toys-server-riyad3399.vercel.app/alltoys', {
+      fetch('https://racer-x-toys-server.vercel.app/alltoys', {
           method: 'POST', 
           headers: {
               'content-type': 'application/json'

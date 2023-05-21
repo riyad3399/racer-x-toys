@@ -6,21 +6,20 @@ import Regular from "../SubCategorys/Regular";
 import { useEffect, useState } from "react";
 
 const Categorys = () => {
-  //   const [tabName, setTabName] = useState("sports");
   const [allCategory, setAllCategory] = useState([]);
   console.log(allCategory);
 
-  const sportsCars = allCategory.filter((item) => item.category === "sports");
-  const regularCars = allCategory.filter((item) => item.category === "regular");
-  const miniTrucks = allCategory.filter((item) => item.category === "truck");
-
   useEffect(() => {
-    fetch(`http://localhost:5000/allToys`)
+    fetch(`https://racer-x-toys-server.vercel.app/allToys`)
       .then((res) => res.json())
       .then((data) => {
         setAllCategory(data);
       });
   }, []);
+
+  const sportsCars = allCategory.filter((item) => item.category === "sports");
+  const regularCars = allCategory.filter((item) => item.category === "regular");
+  const miniTrucks = allCategory.filter((item) => item.category === "truck");
 
   return (
     <div className="text-center">

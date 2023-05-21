@@ -3,13 +3,14 @@ import loginImg from "../../assets/images/login.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
-import { FaGoogle, FaGithub } from "react-icons/fa";
+import { FaGoogle, FaGithub, FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const { signIn, googleLogin, githubLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
-  const from = location.state?.from.pathname || '/';
+  const from = location.state?.from.pathname || "/";
   const navigate = useNavigate();
 
   const handleLogin = (event) => {
@@ -25,7 +26,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         form.reset();
-        navigate(from)
+        navigate(from);
         setError("");
         toast.success("Login successful", { theme: "dark", autoClose: 2000 });
       })
@@ -41,7 +42,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setError("");
-        navigate(from)
+        navigate(from);
         toast.success("Login successful", { theme: "dark", autoClose: 2000 });
       })
       .catch((error) => {
@@ -54,12 +55,16 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate(from)
+        navigate(from);
         toast.success("Login successful", { theme: "dark", autoClose: 2000 });
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -86,7 +91,7 @@ const Login = () => {
                 className="input input-bordered"
               />
             </div>
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
@@ -97,6 +102,7 @@ const Login = () => {
                 required
                 className="input input-bordered"
               />
+              <p onClick={handleShowPassword} >{showPassword ? <FaEye /> : <FaEyeSlash />}</p>
             </div>
             <p className="text-center font-semibold mt-3">
               Racer-X-toys New? Go to{" "}
