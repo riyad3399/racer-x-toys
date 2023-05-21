@@ -2,11 +2,12 @@ import { Link, useLoaderData } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import useTitle from "../../hooks/useTitle";
 
 const ViewDetails = () => {
   const loaderToys = useLoaderData();
 
-
+useTitle('view Details')
   const { photo, name, sellerName, email, price, rating, quantity, details } =
     loaderToys;
 
